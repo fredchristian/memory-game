@@ -37,10 +37,12 @@
                         @click="$wire.flip(@js($key)), visible = true"
                         @rollback.window="@js(!$card['win']) ? setTimeout(function() { visible = false, disabled = false }, @js($delay)) : null"
                         @restart.window="visible = false"
-                        class="cursor-pointer"
                         x-cloak
                     >
-                        <div x-show="!visible" class="border-2 rounded-xl p-4 hover:-rotate-3 hover:scale-105 hover:shadow-2xl duration-300">
+                        <div 
+                            x-show="!visible" 
+                            class="border-2 rounded-xl p-4"
+                            :class="disabled ? '' : 'hover:-rotate-3 hover:scale-105 hover:shadow-2xl duration-300 cursor-pointer'">
                             <div class="w-full flex items-center justify-center h-64 bg-sky-500 rounded-md">
                                 <img src="{{ $default_card }}" class="h-32 w-auto object-contain drop-shadow-lg">
                             </div>
