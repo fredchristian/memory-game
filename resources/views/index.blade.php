@@ -40,7 +40,7 @@
                         class="cursor-pointer"
                         x-cloak
                     >
-                        <div x-show="!visible" class="border-2 rounded-xl p-4 hover:-rotate-3 hover:scale-105 duration-300">
+                        <div x-show="!visible" class="border-2 rounded-xl p-4 hover:-rotate-3 hover:scale-105 hover:shadow-2xl duration-300">
                             <div class="w-full flex items-center justify-center h-64 bg-sky-500 rounded-md">
                                 <img src="{{ $default_card }}" class="h-32 w-auto object-contain drop-shadow-lg">
                             </div>
