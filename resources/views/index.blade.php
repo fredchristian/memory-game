@@ -1,4 +1,4 @@
-<div id="confetti" x-data="{ cards: $wire.cards  }" class="space-y-16"> 
+<div id="confetti" class="space-y-16"> 
     <div class="grid grid-cols-4 gap-16">    
         @foreach($cards as $key => $item)
             <div class="border-2 rounded-lg shadow-neutral-300 duration-300 w-72 h-96 flex items-center justify-center overflow-hidden cursor-pointer animate__animated"

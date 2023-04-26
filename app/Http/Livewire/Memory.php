@@ -25,8 +25,10 @@ class Memory extends Component
 
     private function random(?int $numbers = 4): array
     {
-        return collect(CardEnum::cases())
-            ->random($numbers)
+        $cards = CardEnum::cases();
+
+        return collect($cards)
+            ->random($numbers <= count($cards) ? $numbers : count($cards))
             ->map(function ($item) {
                 return [
                     'card' => $item->name,
