@@ -1,4 +1,4 @@
-<div class="h-full flex flex-cols items-center justify-center">
+<div class="min-h-full flex flex-cols items-center justify-center">
     <div class="w-full space-y-16">
         <div class="flex items-center justify-between space-x-8">
             <div x-data @click="$wire.restart()">
@@ -29,7 +29,7 @@
             @disable.window="disabled = true"
             @enable.window="disabled = false"
             >
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-16">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach($cards as $key => $card)
                     <button 
                         x-data="{ visible: false }" 
