@@ -2,8 +2,6 @@ import './bootstrap';
 
 import.meta.glob(['../images/**']);
 
-import 'animate.css';
-
 import confetti from "canvas-confetti";
 
 Livewire.on('confetti', function() {
