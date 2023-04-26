@@ -17,8 +17,11 @@ class Memory extends Component
 
     public int $delay = 2000;
 
+    public int $attempts = 0;
+
     public function mount(): void
     {
+        $this->attempts = 0;
         $this->cards = $this->generate($this->limit);
         $this->default_card = CardEnum::default_image();
     }
@@ -53,7 +56,6 @@ class Memory extends Component
     public function flip(int $key): void
     {
         if (! $this->cards[$key]['visible']) {
-
             data_set($this->cards[$key], 'visible', true);
 
             $this->compare_two_cards[] = [
@@ -67,7 +69,10 @@ class Memory extends Component
 
     private function compare(): void
     {
-        if (count($this->compare_two_cards) === 2) {
+        if (count($this->compare_two_cards) === 2) 
+        {
+            $this->dispatchBrowserEvent('disable');
+
             $this->are_similar($this->compare_two_cards)
                 ? $this->match()
                 : $this->rollback();
@@ -88,6 +93,10 @@ class Memory extends Component
         unset($this->compare_two_cards);
 
         $this->emit('confetti');
+
+        $this->dispatchBrowserEvent('enable');
+
+        $this->attempts++;
     }
 
     private function rollback(): void
@@ -99,6 +108,26 @@ class Memory extends Component
         unset($this->compare_two_cards);
 
         $this->dispatchBrowserEvent('rollback');
+
+        $this->attempts++;
+    }
+
+    public function restart()
+    {
+        $this->dispatchBrowserEvent('restart');
+        unset($this->cards);
+        unset($this->attempts);
+        $this->mount();
+    }
+
+    public function currentScore(): int
+    {
+        return collect($this->cards)->sum('win') / 2;
+    }
+
+    public function totalScore():int
+    {
+        return $this->limit;
     }
 
     public function render()
