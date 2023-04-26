@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html, body {
+        min-height: -webkit-fill-available;
+        -webkit-touch-callout: none;
+        @apply h-full w-full m-0 scroll-smooth;
+    }
+
+    body {
+        @apply bg-white text-neutral-900;
+    } 
+}
+
+
+@layer components {
+}
+
+@layer utilities {
+    [x-cloak] { display: none !important; }
+}
