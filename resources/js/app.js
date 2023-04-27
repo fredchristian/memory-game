@@ -13,7 +13,8 @@ Livewire.on('confetti', function() {
 
     var count = 300;
     var defaults = {
-      origin: { y: 0.7 }
+      angle: 90,
+      origin: { x:0.5, y: 1 }
     };
 
     function fire(particleRatio, opts) {

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Livewire\Memory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Memory::class);
+Route::get('/', App\Http\Livewire\Memory::class)->name('homescreen');

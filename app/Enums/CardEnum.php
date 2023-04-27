@@ -25,11 +25,11 @@ enum CardEnum: string
     public function image(): string
     {
         return match ($this) {
-            default => Vite::asset('resources/images/'.strtolower($this->name).'.png'),
+            default => Vite::asset('resources/images/characters/'.strtolower($this->name).'.png'),
         };
     }
 
-    public static function default_image(?string $path = 'resources/images/default.png'): string
+    public static function default(?string $path = 'resources/images/logo.png'): string
     {
         return Vite::asset($path);
     }

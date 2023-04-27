@@ -6,13 +6,13 @@ use App\Enums\CardEnum;
 use App\Enums\DifficultyEnum;
 use Livewire\Component;
 
-class Memory extends Component
+class Game extends Component
 {
     public $difficulty;
 
-    public ?string $backface;
-
     public array $cards = [];
+
+    public string $default_card = '';
 
     public array $compare_two_cards = [];
 
@@ -20,38 +20,23 @@ class Memory extends Component
 
     public int $attempts = 0;
 
-    public function mount()
+    public function mount(?string $difficulty = 'easy'): void
     {
-        $this->difficulty = null;
+        $this->difficulty = DifficultyEnum::select($difficulty);
 
-        $this->backface = CardEnum::default();
+        $this->cards = $this->generate($this->difficulty->tiles());
+
+        $this->default_card = CardEnum::default();
 
         $this->attempts = 0;
     }
 
-    public function init()
-    {
-        $this->setCards($this->difficulty->tiles());
-    }
-
-    public function setDifficulty(string $value)
-    {
-        $this->difficulty = DifficultyEnum::select($value);
-
-        $this->init();
-    }
-
-    public function getDifficulties(): array
-    {
-        return DifficultyEnum::cases();
-    }
-
-    private function setCards(int $tiles = 4): void
+    private function random(?int $numbers = 4): array
     {
         $cards = CardEnum::cases();
 
-        $selection = collect($cards)
-            ->random($tiles <= count($cards) ? $tiles : count($cards))
+        return collect($cards)
+            ->random($numbers <= count($cards) ? $numbers : count($cards))
             ->map(function ($item) {
                 return [
                     'card' => $item->name,
@@ -62,8 +47,13 @@ class Memory extends Component
                 ];
             })
             ->toArray();
+    }
 
-        $this->cards = collect(array_merge($selection, $selection))
+    private function generate(?int $characters = 4): array
+    {
+        $cards = $this->random($characters);
+
+        return collect(array_merge($cards, $cards))
             ->shuffle()
             ->toArray();
     }
@@ -129,17 +119,9 @@ class Memory extends Component
     public function restart()
     {
         $this->dispatchBrowserEvent('restart');
-
-        $this->reset(['cards', 'compare_two_cards', 'attempts']);
-
-        $this->init();
-    }
-
-    public function cancel()
-    {
-        $this->reset(['difficulty', 'cards', 'compare_two_cards', 'attempts']);
-
-        $this->mount();
+        unset($this->cards);
+        unset($this->attempts);
+        $this->mount($this->difficulty->value);
     }
 
     public function currentScore(): int
@@ -149,6 +131,11 @@ class Memory extends Component
 
     public function totalScore(): int
     {
-        return $this->difficulty?->tiles() ?? 0;
+        return $this->difficulty->tiles();
+    }
+
+    public function render()
+    {
+        return view('livewire.game');
     }
 }
