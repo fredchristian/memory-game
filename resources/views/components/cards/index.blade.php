@@ -4,10 +4,10 @@
 ])
 
 <button 
-    x-data="{ visible: false }" 
+    x-data="{ visible: false, wrong: false }" 
     :disabled="disabled"
     @click="$wire.flip(@js($key)), visible = true"
-    @rollback.window="@js(!$card['win']) ? setTimeout(function() { visible = false, disabled = false }, @js($this->delay)) : null"
+    @rollback.window="@js(!$card['win']) && (wrong = true, setTimeout(function() { visible = false, disabled = false, wrong = false }, @js($this->delay)))"
     @restart.window="visible = false"
     x-cloak >
     
