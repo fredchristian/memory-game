@@ -12,5 +12,5 @@
     x-cloak >
     
     <x-cards.backface />
-    <x-cards.face :card="$card" />
+    <x-cards.face :$card />
 </button>

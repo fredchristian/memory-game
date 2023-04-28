@@ -20,7 +20,7 @@ class Memory extends Component
 
     public int $attempts = 0;
 
-    public function mount()
+    public function mount(): void
     {
         $this->difficulty = null;
 
@@ -29,12 +29,12 @@ class Memory extends Component
         $this->attempts = 0;
     }
 
-    public function init()
+    public function init(): void
     {
         $this->setCards($this->difficulty->tiles());
     }
 
-    public function setDifficulty(string $value)
+    public function setDifficulty(string $value): void
     {
         $this->difficulty = DifficultyEnum::select($value);
 
@@ -65,6 +65,13 @@ class Memory extends Component
 
         $this->cards = collect(array_merge($selection, $selection))
             ->shuffle()
+            ->toArray();
+    }
+
+    public function characters(): array
+    {
+        return collect($this->cards)
+            ->unique('name')
             ->toArray();
     }
 
@@ -126,7 +133,7 @@ class Memory extends Component
         $this->attempts++;
     }
 
-    public function restart()
+    public function restart(): void
     {
         $this->dispatchBrowserEvent('restart');
 
@@ -135,7 +142,7 @@ class Memory extends Component
         $this->init();
     }
 
-    public function cancel()
+    public function cancel(): void
     {
         $this->reset(['difficulty', 'cards', 'compare_two_cards', 'attempts']);
 
