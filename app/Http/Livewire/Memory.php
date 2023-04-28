@@ -68,13 +68,6 @@ class Memory extends Component
             ->toArray();
     }
 
-    public function characters(): array
-    {
-        return collect($this->cards)
-            ->unique('name')
-            ->toArray();
-    }
-
     public function flip(int $key): void
     {
         if (! $this->cards[$key]['visible']) {
