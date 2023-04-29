@@ -13,7 +13,7 @@
         title = event.detail.title;
         message = event.detail.message;
         setTimeout(function() { open = false }, 4000);
-    " class="absolute flex justify-center mt-12">
+    " class="absolute flex justify-center mt-10 md:mt-12 w-full md:w-auto md:max-w-lg px-4">
         
     <div class="flex items-center space-x-8 pl-8 pr-16 py-4 bg-black/90 backdrop-blur rounded-full w-full">
         <img :src="image" class="inline-block h-10 w-10 rounded-full object-cover object-top scale-150">

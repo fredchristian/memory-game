@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-cover bg-fixed bg-center bg-no-repeat" style="background-image: url('{{ Vite::asset('resources/images/homescreen.jpg') }}')">
-    <div class="relative inset-x-0 top-0 flex justify-center z-50 px-4">
+    <div class="relative inset-x-0 top-0 flex justify-center z-50">
         <x-layouts.notification />
     </div>
     
