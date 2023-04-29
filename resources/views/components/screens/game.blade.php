@@ -8,7 +8,7 @@
     <x-menu />
         
     <div
-        x-data="{ disabled: false, gameover: false }"
+        x-data="{ disabled: false }"
         @disable.window="disabled = true"
         @enable.window="disabled = false"
         @gameover.window="setTimeout(function() { gameover = true }, 2000)"
