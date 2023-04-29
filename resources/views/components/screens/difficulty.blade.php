@@ -1,6 +1,7 @@
 <div 
     x-show="! play" 
-    x-transition:enter.scale.80 x-cloak
+    x-cloak
+    x-transition:enter.scale.80
     class="flex-1 flex flex-col justify-center space-y-12">
     <div class="flex flex-col items-center justify-center space-y-8">
         <img 

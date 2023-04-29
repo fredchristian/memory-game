@@ -20,6 +20,7 @@
         <div 
             x-show="gameover" 
             x-cloak 
+            x-transition:enter.scale.80
             class="w-full min-h-full flex flex-col items-center justify-center space-y-16">
                 <div class="text-center space-y-2">
                     <h1 class="text-8xl font-sigmar text-sky-500 drop-shadow-lg stroke">
