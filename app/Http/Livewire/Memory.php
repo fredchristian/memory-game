@@ -88,13 +88,13 @@ class Memory extends Component
         if (count($this->compare_two_cards) === 2) {
             $this->dispatchBrowserEvent('disable');
 
-            $this->are_similar($this->compare_two_cards)
+            $this->areSimilar($this->compare_two_cards)
                 ? $this->match()
                 : $this->rollback();
         }
     }
 
-    private function are_similar(array $items): bool
+    private function areSimilar(array $items): bool
     {
         return $items[0]['name'] == $items[1]['name'];
     }
@@ -117,9 +117,18 @@ class Memory extends Component
 
         $this->emit('confetti');
 
-        $this->dispatchBrowserEvent('enable');
-
         $this->attempts++;
+
+        $this->checkIfGameIsOver() 
+            ? $this->dispatchBrowserEvent('gameover')
+            : $this->dispatchBrowserEvent('enable');
+    }
+
+    public function checkIfGameIsOver(): bool 
+    {
+        $cards = collect($this->cards);
+
+        return $cards->where('win', 1)->count() === $cards->count();
     }
 
     private function rollback(): void

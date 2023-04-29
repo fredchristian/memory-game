@@ -16,6 +16,9 @@
 
 
 @layer components {
+    .stroke {
+        -webkit-text-stroke: 2px #fde047;
+    }
 }
 
 @layer utilities {
