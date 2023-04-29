@@ -120,7 +120,7 @@ class Memory extends Component
         $this->attempts++;
 
         $this->checkIfGameIsOver() 
-            ? $this->dispatchBrowserEvent('gameover')
+            ? $this->gameOver()
             : $this->dispatchBrowserEvent('enable');
     }
 
@@ -129,6 +129,12 @@ class Memory extends Component
         $cards = collect($this->cards);
 
         return $cards->where('win', 1)->count() === $cards->count();
+    }
+
+    public function gameOver(): void
+    {
+        $this->emit('fireworks');
+        $this->dispatchBrowserEvent('gameover');
     }
 
     private function rollback(): void
