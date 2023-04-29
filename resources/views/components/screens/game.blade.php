@@ -11,7 +11,7 @@
         x-data="{ disabled: false, gameover: false }"
         @disable.window="disabled = true"
         @enable.window="disabled = false"
-        @gameover.window="setTimeout(function() { gameover = true }, 1500)"
+        @gameover.window="setTimeout(function() { gameover = true }, 2000)"
         class="flex-1 flex content-center">
 
         <div 

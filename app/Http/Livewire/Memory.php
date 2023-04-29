@@ -16,7 +16,7 @@ class Memory extends Component
 
     public array $compare_two_cards = [];
 
-    public int $delay = 2500;
+    public int $delay = 2000;
 
     public int $attempts = 0;
 
