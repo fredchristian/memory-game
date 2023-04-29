@@ -76,6 +76,7 @@ class Memory extends Component
             $this->compare_two_cards[] = [
                 'id' => $key,
                 'name' => $this->cards[$key]['name'],
+                'image' => $this->cards[$key]['image'],
             ];
 
             $this->compare();
@@ -103,6 +104,14 @@ class Memory extends Component
         foreach ($this->compare_two_cards as $card) {
             data_set($this->cards[$card['id']], 'win', true);
         }
+
+        $this->dispatchBrowserEvent(
+            'notification', 
+            [
+                'title' => collect([__('Félicitation'), __('Génial'), __('Super'), __('Trop fort'), __('Wouaf!')])->random(),
+                'message' => __('Tu as trouvé :character!', ['character' => $this->compare_two_cards[0]['name']]),
+                'image' => $this->compare_two_cards[0]['image'],
+            ]);
 
         unset($this->compare_two_cards);
 

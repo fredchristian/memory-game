@@ -3,7 +3,7 @@
         <x-menu.characters class="flex" />
     </div>
 
-    <div class="flex-initial flex items-center justify-between space-x-8 py-4">
+    <div class="flex items-center justify-between space-x-8 py-4">
         <x-menu.score />
         <x-menu.characters class="hidden md:flex" />
         <x-menu.cancel />
