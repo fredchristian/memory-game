@@ -134,6 +134,7 @@ class Memory extends Component
     public function gameOver(): void
     {
         $this->emit('fireworks');
+        
         $this->dispatchBrowserEvent('gameover');
     }
 
