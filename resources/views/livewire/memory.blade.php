@@ -2,6 +2,7 @@
     <div 
         @disable.window="disabled = true"
         @enable.window="disabled = false"
+        @gameover.window="setTimeout(function() { gameover = true }, 2000)"
         id="confetti"
         class="min-h-screen flex flex-col mx-auto container py-8 px-6 text-white"
     >

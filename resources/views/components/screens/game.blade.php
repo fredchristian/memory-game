@@ -7,13 +7,7 @@
 
     <x-menu />
         
-    <div
-        x-data="{ disabled: false }"
-        @disable.window="disabled = true"
-        @enable.window="disabled = false"
-        @gameover.window="setTimeout(function() { gameover = true }, 2000)"
-        class="flex-1 flex content-center">
-
+    <div class="flex-1 flex content-center">
         <div 
             x-show="! gameover" 
             x-cloak 

@@ -1,5 +1,5 @@
 <div 
-    @click="$wire.cancel(), play = false, gameover = false"
+    @click="$wire.cancel(), play = false, disabled = false, gameover = false"
     class="inline-flex items-center space-x-2 cursor-pointer"
     >
     <span class="inline-block font-sigmar">
