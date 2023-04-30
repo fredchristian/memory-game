@@ -17,5 +17,6 @@
     {{ $slot }}
  
     @livewireScripts
+    <script async src="https://stats.levelup.re/script.js" data-website-id="7bd6a597-9d81-429c-a9e5-c17f392f2c1b"></script>
 </body>
 </html>

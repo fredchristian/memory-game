@@ -20,7 +20,7 @@
                 collect(['rotate-3', 'rotate-6', 'rotate-12', '-rotate-3', '-rotate-6', '-rotate-12'])->random(),
 
             ]) left-2">
-            <x-images.paw class="h-32 w-32 fill-red-600/70" />
+            <x-cards.paw class="h-32 w-32 fill-red-600/70" />
         </div>
 
         <img src="{{ $card['image'] }}" class="h-full w-auto object-contain">
