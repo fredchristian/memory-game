@@ -4,7 +4,7 @@
         collect(['hover:-rotate-1', 'hover:rotate-1', 'hover:-rotate-3', 'hover:rotate-3',])->random(),
     ])>
     
-    <x-images.paw class="h-12 w-12 -rotate-12 scale-125 absolute left-4 z-0 fill-sky-900/10 hidden group-hover:block" />
+    <x-cards.paw class="h-12 w-12 -rotate-12 scale-125 absolute left-4 z-0 fill-sky-900/10 hidden group-hover:block" />
 
     <div class="relative z-10 space-y-1">
         <span class="block font-sigmar group-hover:drop-shadow-md text-lg leading-none">
